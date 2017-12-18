@@ -3,7 +3,7 @@
 // load mongoose since we need it to define a model
 var mongoose = require('mongoose');
 
-module.exports = mongoose.model('Todo', {
+var mealSchema = mongoose.Schema({
     date: String, // date
     cookId: Number, // id of the cook
     mealName: String, // name of the meal 
@@ -13,3 +13,6 @@ module.exports = mongoose.model('Todo', {
     dinersMax: Number, //max number of diners
     diners: [Number], //array of diner IDs
 });
+
+
+module.exports = mongoose.model('Meal', mealSchema);

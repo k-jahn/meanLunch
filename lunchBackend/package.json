@@ -9,7 +9,8 @@
     "cors": "^2.8.4",
     "express": "~4.13.2",
     "method-override": "~2.3.5",
-    "mongoose": "~3.6.2",
+    "mongodb": "^3.0.0-rc0",
+    "mongoose": "^3.6.20",
     "morgan": "~1.6.1"
   }
 }
