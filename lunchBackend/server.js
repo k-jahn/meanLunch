@@ -1,6 +1,7 @@
 // server.js entrypoint for node server
 
 // dependencies =================================================
+var bodyParser = require('body-parser');
 var cors = require('cors');
 var express = require('express');
 var mongoose = require('mongoose');
@@ -20,12 +21,14 @@ mongoose.connect(dbUrl);
 var app = express();
 
 app.use(cors());
-app.use(morgan('dev'))
-
+app.use(morgan('dev'));
+app.use(bodyParser.urlencoded({ 'extended': 'true' }));
+app.use(bodyParser.json());
+app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
 
 // load routes ===============================================
 
-require('./api/routes')(app)
+require('./api/routes')(app);
 
 
 // start app

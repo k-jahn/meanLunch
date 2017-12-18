@@ -17,13 +17,14 @@ module.exports = function (app) {
 
     // Create a meal and return all meals
     app.post('/api/meal', function (req, res) {
+        console.log(req.body);
         Meal.create({
-            date: req.date, // date
-            cookId: 1, // id of the cook
-            mealName: 'testing', // name of the meal 
-            mealDescription: '', // description of the meal
-            vegetarian: false,
-            vegan: false,
+            date: req.body.date, // date
+            cookId: req.body.cookId, // id of the cook
+            mealName: req.body.mealName, // name of the meal 
+            mealDescription: req.body.mealDescription || '', // description of the meal
+            vegetarian: req.body.vegetarian || false,
+            vegan: req.body.vegan || false,
             dinersMax: 0, //max number of diners
             diners: [0], //array of diner IDs
         }, function (err, meal) {
@@ -32,20 +33,5 @@ module.exports = function (app) {
         });
     });
 
-    // // delete a todo
-    // app.delete('/api/todos/:todo_id', function (req, res) {
-    //     Todo.remove({
-    //         _id: req.params.todo_id
-    //     }, function (err, todo) {
-    //         if (err)
-    //             res.send(err);
-
-    //         // get and return all the todos after you create another
-    //         Todo.find(function (err, todos) {
-    //             if (err)
-    //                 res.send(err)
-    //             res.json(todos);
-    //         });
-    //     });
-    // });
+    // app.delete(
 };

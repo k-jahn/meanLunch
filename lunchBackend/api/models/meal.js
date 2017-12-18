@@ -5,9 +5,9 @@ var mongoose = require('mongoose');
 
 // define schema
 var mealSchema = mongoose.Schema({
-    date: String, // date
+    date: { type:String, required:true }, // date
     cookId: Number, // id of the cook
-    mealName: String, // name of the meal 
+    mealName: { type: String, required: true }, // name of the meal 
     mealDescription: String, // description of the meal
     vegetarian: Boolean,
     vegan: Boolean,

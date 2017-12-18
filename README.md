@@ -1,1 +1,1 @@
-### Coming soon
+# MEAN Stack LunchApp
