@@ -1,16 +1,23 @@
 {
-  "name": "lunchbackend",
+  "name": "lunch",
   "version": "0.0.0",
-  "description": "LunchApp Backend",
+  "description": "API and DB-controll for lunchApp",
   "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [
+    "lunch",
+    "cooking",
+    "MEAN stack"
+  ],
   "author": "konrad",
+  "license": "ISC",
   "dependencies": {
-    "body-parser": "~1.14.1",
     "cors": "^2.8.4",
-    "express": "~4.13.2",
-    "method-override": "~2.3.5",
+    "express": "^4.16.2",
     "mongodb": "^3.0.0-rc0",
-    "mongoose": "^3.6.20",
-    "morgan": "~1.6.1"
+    "mongoose": "^4.13.7",
+    "morgan": "^1.9.0"
   }
 }

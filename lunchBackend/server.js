@@ -1,36 +1,34 @@
-// server.js
+// server.js entrypoint for node server
 
-// load dependencies ========================
+// dependencies =================================================
+var cors = require('cors');
 var express = require('express');
-var mongoose = require('mongoose');              // mongoose for mongodb
-var morgan = require('morgan');                // log requests to the console (express4)
-var bodyParser = require('body-parser');         // pull information from HTML POST (express4)
-// var methodOverride = require('method-override'); // simulate DELETE and PUT (express4)
-var database = require('./config/database');
-var cors = require('cors')
+var mongoose = require('mongoose');
+var morgan = require('morgan');
 
 
-// ===============================================================
-var app = express();                        // use express for app
-var port = process.env.PORT || 8888;         // set the port
+// connect database ========================================================
+var dbUrl = "mongodb://localhost:27017/lunch"
+var db = mongoose.connection;
 
-// connect database
-mongoose.connect('mongodb://localhost/test');     // connect to local mongoDB database
-mongoose.connection.on('error', () => console.log( 'connection error:'));
-mongoose.connection.once('open', () => console.log('mongoose connection established'));
+db.on('error', (e) => console.log('mongoose-mongodb connection error', e));
+db.once('open', () => console.log('mongoose-mongodb connected at ' + dbUrl));
+
+mongoose.connect(dbUrl); 
+
+// load and configure express app
+var app = express();
+
+app.use(cors());
+app.use(morgan('dev'))
 
 
-app.use(cors())                                                 // quick fix to allow cross origin requests
-app.use(express.static(__dirname + '/public'));                 // set the static files location /public/img will be /img for users
-app.use(morgan('dev'));                                         // log every request to the console
-app.use(bodyParser.urlencoded({ 'extended': 'true' }));            // parse application/x-www-form-urlencoded
-app.use(bodyParser.json());                                     // parse application/json
-app.use(bodyParser.json({ type: 'application/vnd.api+json' })); // parse application/vnd.api+json as json
-// app.use(methodOverride());
+// load routes ===============================================
 
-// routes ======================================================================
-require('./app/routes.js')(app);
+require('./api/routes')(app)
 
-// listen (start app with node server.js) ======================================
-app.listen(port);
-console.log("App listening on port : " + port);
+
+// start app
+var port = 8888;
+app.listen(port)
+console.log('App listening on port ' + port);

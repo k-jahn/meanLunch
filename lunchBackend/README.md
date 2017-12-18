@@ -1,4 +1,8 @@
-### LunchApp Backend
+# lunchApp Backend
 
-Backend for a MEAN-Stack LunchApp.
-Adapted from https://github.com/epic-math/NodeJS-MEAN.git
+built with:
+mongoDb as database
+mongoose as ODM
+Express as API framework
+
+code by konrad

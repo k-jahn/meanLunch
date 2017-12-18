@@ -1,8 +1,9 @@
-// app/models/meal.js
+// Model for a meal DB entry
 
-// load mongoose since we need it to define a model
+// load mongoose
 var mongoose = require('mongoose');
 
+// define schema
 var mealSchema = mongoose.Schema({
     date: String, // date
     cookId: Number, // id of the cook
@@ -12,7 +13,7 @@ var mealSchema = mongoose.Schema({
     vegan: Boolean,
     dinersMax: Number, //max number of diners
     diners: [Number], //array of diner IDs
-});
+}, { bufferCommands: false });
 
-
+// export model
 module.exports = mongoose.model('Meal', mealSchema);
