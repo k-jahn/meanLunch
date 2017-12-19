@@ -14,7 +14,13 @@ module.exports = function (app) {
         //  mongoose.find meals
         Meal.find(function (err, meals) {
             if (err) res.send(err) // report errors
-            else res.json(meals); // send found meals to client
+            else {
+                const resJson = {
+                    api: 'lunch api v0.0.0 /meals',
+                    meals: meals,
+                };
+                res.json(resJson); // send found meals to client
+            } 
         });
     });
     
@@ -32,7 +38,7 @@ module.exports = function (app) {
             diners: [0], //array of diner IDs
         }, function (err, meal) {
             if (err) res.send(err);
-            else res.send('meal created');
+            else res.send('meal created: ' + JSON.stringify(req.body));
         });
     });
     
