@@ -2,22 +2,25 @@
 
 // load models
 var Meal = require('./models/meal');
+var User = require('./models/user');
+
 
 // export API routes ================================================================
 module.exports = function (app) {
 
+    // meals api --------------------------------------------------------------
     // get meals
-    app.get('/api/meal', function (req, res) {
-        // Let mongoose find all meals
+    app.get('/api/meal/', function (req, res) {
+        //  mongoose.find meals
         Meal.find(function (err, meals) {
             if (err) res.send(err) // report errors
-            res.json(meals); // send found meals to client
+            else res.json(meals); // send found meals to client
         });
     });
-
-    // Create a meal and return all meals
+    
+    // Create a meal 
     app.post('/api/meal', function (req, res) {
-        console.log(req.body);
+        // console.log(req.body);
         Meal.create({
             date: req.body.date, // date
             cookId: req.body.cookId, // id of the cook
@@ -29,9 +32,31 @@ module.exports = function (app) {
             diners: [0], //array of diner IDs
         }, function (err, meal) {
             if (err) res.send(err);
-            res.send('meal created')
+            else res.send('meal created');
+        });
+    });
+    
+    // delete meal
+    
+    // put meal
+    
+    // users api ---------------------------------------------------------------------
+    app.get('/api/user/', function (req, res) {
+        //  mongoose.find user
+        User.find(function (err, user) {
+            if (err) res.send(err) // report errors
+            res.json(user); // send users to client
         });
     });
 
-    // app.delete(
+    app.post('api/user', function(req, res) {
+        User.create({
+            name: req.body.name,
+            vegetarian: req.body.vegetarian || false,
+            vegan: req.body.vegetarian || false
+        })
+
+    });
+
+    
 };
