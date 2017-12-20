@@ -18,7 +18,7 @@ export class MealComponent implements OnInit {
   meals: Meal[] = [];
 
   showMeal(prop): string {
-    return this.meals[0] ? this.meals[+this.date][prop] : 'loading';
+    return this.meals[0] ? this.meals[0][prop] : 'loading';
   }
 
   constructor(
@@ -26,7 +26,7 @@ export class MealComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.mealService.getMeals(0).subscribe(x => this.meals = x);
+    this.mealService.getMeals('2017/0/' + this.date).subscribe(x => this.meals = x);
   }
 
 }

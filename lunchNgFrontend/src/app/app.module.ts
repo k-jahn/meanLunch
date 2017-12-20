@@ -1,7 +1,8 @@
 // import library modules
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { NgModule } from '@angular/core';
 
 // import custom services
 import { MealService } from './meal.service';
@@ -22,6 +23,7 @@ import { NavComponent } from './nav/nav.component';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     HttpClientModule
   ],
   providers: [

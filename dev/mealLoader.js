@@ -4,7 +4,11 @@ $(function() {
 function set(){
     for (var k=0; k<5; k++){
         let m = {
-            date: k, // date
+            date: {
+                year: 2017,
+                week: 0,
+                day: k
+            },
             cookId: k, // id of the cook
             mealName: ['pasta','soup','lasagne','curry','falafel'][k], // name of the meal
             mealDescription: '', // description of the meal

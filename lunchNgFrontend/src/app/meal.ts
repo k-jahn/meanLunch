@@ -1,7 +1,11 @@
 // meal class - compare meal schema/model for mongoose (backend/api/models/meal)
 
 export class Meal {
-    date: Number; // date
+    date: { // date
+        year: Number,
+        week: Number,
+        day: Number
+    };
     cookId: Number; // id of the cook
     mealName: String; // name of the meal
     mealDescription: String; // description of the meal

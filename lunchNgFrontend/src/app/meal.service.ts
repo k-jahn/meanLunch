@@ -23,8 +23,8 @@ export class MealService {
     private http: HttpClient
   ) { }
 
-  getMeals(week): Observable<Meal[]> {
-    return this.http.get<ApiResponse>(apiUrl + 'meal/')
+  getMeals(par): Observable<Meal[]> {
+    return this.http.get<ApiResponse>(apiUrl + 'meal/' + par)
       .pipe(
         map(r => r.meals.map(m => new Meal(m))),
         tap(r => window.console.log('fetched meals', r))
