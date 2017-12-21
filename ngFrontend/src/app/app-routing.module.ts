@@ -16,7 +16,6 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent},
   { path: 'mealdetail/:y/:w/:d', component: MealDetailComponent },
   { path: 'profile', component: ProfileComponent},
-  { path: 'profile/:id', component: ProfileComponent},
 ];
 
 @NgModule({

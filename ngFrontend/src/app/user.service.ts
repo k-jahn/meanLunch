@@ -23,12 +23,11 @@ export class UserService {
     private http: HttpClient
   ) { }
 
-  getUser(par): Observable<User[]> {
+  getUser(par: string): Observable<User[]> {
     return this.http.get<ApiResponse>(apiUrl + 'user/' + par)
       .pipe(
-      map(r => r.users.map(m => new User(m))),
-      tap(r => window.console.log('fetched users', r))
+        map(r => r.users.map(m => new User(m))),
+        tap(r => window.console.log('fetched users', r))
       );
-
   }
 }

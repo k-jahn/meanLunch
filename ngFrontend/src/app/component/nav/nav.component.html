@@ -1,7 +1,11 @@
 <nav>
+    <a routerLink="/calendar">Calendar</a>
+    <span *ngIf="userId">
+        <a routerLink="/profile">Profile</a> {{user.name}}: 
+    </span>
+    <span *ngIf="!userId">
+        <a routerLink="/login">Login</a>
+    </span>
+    
     {{title}}
-    <a routerLink="/calendar"><button>Calendar</button></a>
-    <a routerLink="/profile"><button>Profile</button></a>
-    <a routerLink="/login"><button>Login</button></a>
-
 </nav>

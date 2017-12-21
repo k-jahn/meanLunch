@@ -1,5 +1,7 @@
 // import from library
 import { Component, OnInit, Input } from '@angular/core';
+import { NgSwitch } from '@angular/common';
+
 
 // import service
 import { UserService } from '../../user.service';

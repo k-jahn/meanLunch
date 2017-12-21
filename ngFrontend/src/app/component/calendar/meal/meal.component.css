@@ -1,3 +1,8 @@
+a,a:hover,a:focus {
+    text-decoration: none;
+    color: inherit;
+    cursor: default;
+}
 #mealDiv {
     margin: 0.2em;
     padding: 0.5em;
@@ -32,9 +37,7 @@
     transform: translate(-50%, -50%);
 }
 
-h3 {
-    text-align: center;
-}
+
 h2 {
     display: block;
     height: 6rem;

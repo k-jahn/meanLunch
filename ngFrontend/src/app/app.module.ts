@@ -6,11 +6,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 
 // import custom services
+import { LoginService } from './login.service';
 import { MealService } from './meal.service';
+import { TitleService } from './title.service';
 import { UserService } from './user.service';
 
 // import components
-import { AppComponent } from './app.component';
+import { AppComponent } from './component/app.component';
 import { CalendarComponent } from './component/calendar/calendar.component';
 import { MealComponent } from './component/calendar/meal/meal.component';
 import { NavComponent } from './component/nav/nav.component';
@@ -31,14 +33,16 @@ import { LoginComponent } from './component/login/login.component';
     LoginComponent
   ],
   imports: [
+    AppRoutingModule,
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    AppRoutingModule
   ],
   providers: [
+    LoginService,
     MealService,
-    UserService
+    TitleService,
+    UserService,
   ],
   bootstrap: [AppComponent]
 })

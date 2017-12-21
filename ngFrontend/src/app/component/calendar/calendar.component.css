@@ -1,16 +1,27 @@
 h3 {
     text-align: center;
 }
-div {
-    padding: 0;
+.day {
+    max-width: 200px;
 }
+
+
 div.row {
     position: relative;
+    text-align: center;
 }
-img {
+div.row>div {
+    position: relative;
+    padding: 0;
+}
+div.arrow {
+    max-width: 100px;
+}
+div.row>div img {
     position: absolute;
     top: 50%;
-    transform: translateY(-50%);
+    left: 50%;
+    transform: translate(-50%,-50%);
 }
 .past {
     background-color: #fff

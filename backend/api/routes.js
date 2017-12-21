@@ -88,12 +88,14 @@ module.exports = function (app) {
         return User.find(par)
             .exec(function (err, user) {
                 if (err) res.send(err) // report errors
-                const resJson = {
-                    api: version+' /users',
-                    params: req.params,
-                    users: user
-                };
-                res.json(resJson); // send users to client
+                else {
+                    const resJson = {
+                        api: version+' /users',
+                        params: req.params,
+                        users: user
+                    };
+                    res.json(resJson); // send users to client
+                }
             }); 
     }
     // routes for GET users

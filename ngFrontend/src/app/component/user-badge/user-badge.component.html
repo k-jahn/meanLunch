@@ -1,6 +1,18 @@
 <div *ngIf="user" id="badge" [style.background-color]="user.color">
     {{user.name}}
-    <div *ngIf="user.veganity" id="vegetarian">
-        <span>{{user.veganity}}</span>
+    <div [ngSwitch]="user.veganity" id="veganity">
+        <ng-container *ngSwitchCase="0">
+            <img src="assets/images/vegan-0.png" title="Omnivore" alt="Omnivore">
+        </ng-container>
+        <ng-container *ngSwitchCase="1">
+            <img src="assets/images/vegan-1.png" title="Vegetarian" alt="Vegetarian">
+        </ng-container>
+        <ng-container *ngSwitchCase="2">
+            <img src="assets/images/vegan-2.png" title="Vegan" alt="Vegan">
+        </ng-container>
+        <ng-container *ngSwitchCase="3">
+            <img src="assets/images/vegan-3.png" title="Vegan level 5: Eats nothing that casts a shadow" alt="Vegan level 5: Eats nothing that casts a shadow">
+        </ng-container>
+        
     </div>
 </div>
