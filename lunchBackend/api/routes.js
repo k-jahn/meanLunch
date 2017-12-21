@@ -1,54 +1,79 @@
 // app/routes.js
 
-// load models
-var Meal = require('./models/meal');
-var User = require('./models/user');
 
-// quick and dirty sanitizing
-function san(str) {
-    return str.replace(/[^A-Za-z0-9.\-! ]/g, '')
-}
+
+// load models
+const Meal = require('./models/meal');
+const User = require('./models/user');
+
+// load quick and dirty sanitizer
+const sanitize = require('./sanitize');
 
 // export API routes ================================================================
 module.exports = function (app) {
 
     // meals api --------------------------------------------------------------
-    // get meals
-    app.get('/api/meal/:year/:week/:day', function (req, res) {
-        //  mongoose.find meals
-        Meal.find({
-                'date.year': req.params.year || /./, // todo current day
-                'date.week': req.params.week || /./, // todo current week
-                'date.day': req.params.day || /./,
-            })
+    //  mongoose.find meals
+    const getMeals = function(par, req, res) {
+        Meal.find(par)
             .limit(20)
             .exec(function (err, meals) {
                 if (err) res.send(err) // report errors
                 else {
                     const resJson = {
                         api: 'lunch api v0.0.0 /meals',
-                        meals: meals,
+                        params: req.params,
+                        meals: meals
                     };
                     res.json(resJson); // send found meals to client
                 }
             });
+    }
+    // routes for GET meals
+    app.get('/api/meal/:year/:week/:day', function (req, res) {
+        getMeals({
+                'date.year': req.params.year, 
+                'date.week': req.params.week,
+                'date.day': req.params.day,
+            }, req, res)
     });
-    
-    // Create a meal 
+    app.get('/api/meal/:year/:week/', function (req, res) {
+        getMeals({
+                'date.year': req.params.year, 
+                'date.week': req.params.week,
+            }, req, res)
+    });
+    app.get('/api/meal/:year/', function (req, res) {
+        getMeals({
+                'date.year': req.params.year, 
+            }, req, res)
+    });
+    app.get('/api/meal/', function (req, res) {
+        let currentDate = new Date();
+        getMeals({
+                'date.year': currentDate.getFullYear(), // current.year 
+                'date.week': 0, // current week
+                'date.day': req.params.day,
+            }, req, res)
+    });
+
+    // route for POST meal 
     app.post('/api/meal', function (req, res) {
-        // console.log(req.body);
+        // sanitize input
+        const input = sanitize(req.body);
+        // create entry
         Meal.create({
-            date: req.body.date, // date
-            cookId: req.body.cookId, // id of the cook
-            mealName: san(req.body.mealName), // name of the meal 
-            mealDescription: san(req.body.mealDescription) || '', // description of the meal
-            vegetarian: req.body.vegetarian || false,
-            vegan: req.body.vegan || false,
-            dinersMax: 0, //max number of diners
-            diners: [0], //array of diner IDs
+            date: input.date, // date
+            cookId: input.cookId, // id of the cook
+            mealName: input.mealName, // name of the meal 
+            mealDescription: input.mealDescription || '', // description of the meal
+            vegetarian: input.vegetarian || false,
+            vegan: input.vegan || false,
+            dinersMax: input.dinersMax || 0, //max number of diners
+            diners: input.diners || [], //array of diner IDs
         }, function (err, meal) {
             if (err) res.send(err);
-            else res.send('meal created: ' + JSON.stringify(req.body));
+            else res.send('meal created: ' + JSON.stringify(input));
         });
     });
     
@@ -57,22 +82,39 @@ module.exports = function (app) {
     // put meal
     
     // users api ---------------------------------------------------------------------
+    //  mongoose.find user
+    const getUsers= function(par, req, res) {
+        return User.find(par)
+            .exec(function (err, user) {
+                if (err) res.send(err) // report errors
+                const resJson = {
+                    api: 'lunch api v0.0.0 /users',
+                    params: req.params,
+                    users: user
+                };
+                res.json(resJson); // send users to client
+            }); 
+    }
+    // routes for GET users
+    app.get('/api/user/:id/', function (req, res) {
+        getUsers({_id: req.params.id}, req, res)
+    });
     app.get('/api/user/', function (req, res) {
-        //  mongoose.find user
-        User.find(function (err, user) {
-            if (err) res.send(err) // report errors
-            res.json(user); // send users to client
-        });
+        getUsers({}, req, res)
     });
 
-    app.post('api/user', function(req, res) {
+    // route for POST user
+    app.post('/api/user', function(req, res) {
+        // sanitize input
+        const input = sanitize(req.body);
         User.create({
-            name: req.body.name,
-            vegetarian: req.body.vegetarian || false,
-            vegan: req.body.vegetarian || false
+            name: input.name,
+            vegetarian: input.vegetarian,
+            vegan: input.vegetarian
+        }, function (err, user) {
+            if (err) res.send(err);
+            else res.send('user '+user.id+ 'created:' + JSON.stringify(input));
         })
-
     });
 
-    
 };
