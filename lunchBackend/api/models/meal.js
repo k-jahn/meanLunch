@@ -10,7 +10,7 @@ var mealSchema = mongoose.Schema({
         week: { type: Number, required: true },
         day: { type: Number, required: true }     
     }, 
-    cookId: { type:Number, required:true }, // id of the cook
+    cookId: { type: String, required:true }, // id of the cook
     mealName: { type: String, required: true }, // name of the meal 
     mealDescription: String, // description of the meal
     vegetarian: Boolean,

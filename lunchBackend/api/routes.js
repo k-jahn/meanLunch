@@ -1,6 +1,7 @@
 // app/routes.js
 
-
+// load version nr
+const version = require('./version')
 
 // load models
 const Meal = require('./models/meal');
@@ -8,6 +9,7 @@ const User = require('./models/user');
 
 // load quick and dirty sanitizer
 const sanitize = require('./sanitize');
+
 
 // export API routes ================================================================
 module.exports = function (app) {
@@ -21,7 +23,7 @@ module.exports = function (app) {
                 if (err) res.send(err) // report errors
                 else {
                     const resJson = {
-                        api: 'lunch api v0.0.0 /meals',
+                        api: version + ' /meals',
                         params: req.params,
                         meals: meals
                     };
@@ -88,7 +90,7 @@ module.exports = function (app) {
             .exec(function (err, user) {
                 if (err) res.send(err) // report errors
                 const resJson = {
-                    api: 'lunch api v0.0.0 /users',
+                    api: version+' /users',
                     params: req.params,
                     users: user
                 };

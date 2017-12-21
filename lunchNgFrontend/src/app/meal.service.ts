@@ -9,7 +9,7 @@ import { map, tap } from 'rxjs/operators';
 import { apiUrl } from './urls';
 
 // import class
-import { Meal } from './meal';
+import { Meal } from './class/meal';
 
 interface ApiResponse {
   meals: Meal[];
