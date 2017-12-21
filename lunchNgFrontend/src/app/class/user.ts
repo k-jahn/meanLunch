@@ -4,6 +4,7 @@ export class User {
     '_id': string;
     name: string;
     color: string;
+    veganity: number;
 
     constructor(raw) {
         this.setVals(raw);

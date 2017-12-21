@@ -4,7 +4,7 @@
 const sanitize = function(arg) {
     switch (typeof arg){
         case 'string':
-            return arg.replace(/[^A-Za-z0-9.\-! ]/g, '');
+            return arg.replace(/[^A-Za-z0-9.\-! #]/g, '');
         case 'number':
         case 'boolean':
             return arg;

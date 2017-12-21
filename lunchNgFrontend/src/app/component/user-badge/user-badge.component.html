@@ -1,7 +1,6 @@
 <div *ngIf="user" id="badge" [style.background-color]="user.color">
     {{user.name}}
-    <div *ngIf="user.vegetarian" id="vegetarian">
-        <span>V</span>
-        <span id="vegan" *ngIf="user.vegan">V</span>
+    <div *ngIf="user.veganity" id="vegetarian">
+        <span>{{user.veganity}}</span>
     </div>
 </div>

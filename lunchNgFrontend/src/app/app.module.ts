@@ -1,4 +1,5 @@
 // import library modules
+import { AppRoutingModule } from './/app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -15,6 +16,8 @@ import { MealComponent } from './component/calendar/meal/meal.component';
 import { NavComponent } from './component/nav/nav.component';
 import { UserBadgeComponent } from './component/user-badge/user-badge.component';
 import { MealDetailComponent } from './component/meal-detail/meal-detail.component';
+import { ProfileComponent } from './component/profile/profile.component';
+import { LoginComponent } from './component/login/login.component';
 
 @NgModule({
   declarations: [
@@ -23,12 +26,15 @@ import { MealDetailComponent } from './component/meal-detail/meal-detail.compone
     NavComponent,
     MealComponent,
     UserBadgeComponent,
-    MealDetailComponent
+    MealDetailComponent,
+    ProfileComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AppRoutingModule
   ],
   providers: [
     MealService,

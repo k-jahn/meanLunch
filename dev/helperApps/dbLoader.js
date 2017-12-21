@@ -5,13 +5,17 @@ $(function() {
     $('#get').on('click',get)    
 });
 
+
 // send example meals to api
 function setMeals(){
     $.getJSON('http://localhost:8888/api/user/',function(res) {
-        console.log(res);
         if (res.users.length==0) {
             console.log('add users first!')
         } else{
+            const randomUser = () => res.users[Math.floor(res.users.length * Math.random())]['_id'];
+            const attr = ['green', 'thai', 'spicy', 'boring', 'red', 'tasty', 'holy', 'salty', 'magic','fried'];
+            const food = ['pasta', 'soup', 'lasagne', 'curry', 'falafel', 'gulash', 'sausages', 'spaghetti', 'pizza'];
+            const randomFood = () => (attr[Math.floor(Math.random() * attr.length)]+' '+food[Math.floor(Math.random()*food.length)]);
             for (var k=0; k<5; k++){
                 let m = {
                     date: {
@@ -19,13 +23,16 @@ function setMeals(){
                         week: 0,
                         day: k
                     },
-                    cookId: res.users[Math.floor(res.users.length * Math.random())]['_id'], // id of the cook
-                    mealName: ['pasta','soup','lasagne','curry','falafel'][k], // name of the meal
+                    cookId: randomUser(), // id of the cook
+                    mealName: randomFood(), // name of the meal
                     mealDescription: '', // description of the meal
-                    vegetarian: !((-1) ** k),
-                    vegan: !((-1) ** k),
+                    vegetarian: true,
+                    vegan: true,
                     dinersMax: 6-k, // max number of diners
-                    diners: [k,(k+1)%4], // array of diner IDs
+                    diners: [], // array of diner IDs
+                }
+                for (var i=0;i<Math.random()*7;i++){
+                    m.diners.push(randomUser()) 
                 }
                 $.post('http://localhost:8888/api/meal', m, (r) => $('#meals+div').append($('<p>').text(JSON.stringify(r))));
             }
@@ -35,11 +42,33 @@ function setMeals(){
 
 //load 
 function setUsers() {
-    for (var k = 0; k < 5; k++) {
+    const names = [
+        'alice',
+        'bob',
+        'carol',
+        'david', 
+        'echo',
+        'frederik',
+        'gioia',
+        'hermann',
+        'ines',
+        'jacques',
+        'katta',
+        'leo',
+        'manuela',
+        'norbert',
+        'ottilie',
+        'paul',
+        'quenya',
+        'rasputin'
+    ];
+    
+    for (var k = 0; k < names.length; k++) {
+        const randomCol = () => '#' + Math.floor(Math.random() * (256 ** 3)).toString(16)
         let m = {
-            name: ['alice', 'bob', 'carol', 'david', 'erika'][k], // name
-            vegetarian: !((-1) ** k),
-            vegan: !((-1) ** k),
+            name: names[k], // name
+            veganity: Math.floor(Math.random()*4),
+            color: randomCol(),
         }
         $.post('http://localhost:8888/api/user', m, (r) => $('#users+div').append($('<p>').text(r)));
     }

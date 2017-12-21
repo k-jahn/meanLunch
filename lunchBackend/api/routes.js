@@ -1,7 +1,7 @@
 // app/routes.js
 
 // load version nr
-const version = require('./version')
+const version = require('./version').module
 
 // load models
 const Meal = require('./models/meal');
@@ -69,9 +69,8 @@ module.exports = function (app) {
             cookId: input.cookId, // id of the cook
             mealName: input.mealName, // name of the meal 
             mealDescription: input.mealDescription || '', // description of the meal
-            vegetarian: input.vegetarian || false,
-            vegan: input.vegan || false,
-            dinersMax: input.dinersMax || 0, //max number of diners
+            veganity: +input.veganity,
+            dinersMax: +input.dinersMax || 0, //max number of diners
             diners: input.diners || [], //array of diner IDs
         }, function (err, meal) {
             if (err) res.send(err);
@@ -111,8 +110,8 @@ module.exports = function (app) {
         const input = sanitize(req.body);
         User.create({
             name: input.name,
-            vegetarian: input.vegetarian,
-            vegan: input.vegetarian
+            veganity: input.veganity,
+            color: input.color,
         }, function (err, user) {
             if (err) res.send(err);
             else res.send('user '+user.id+ 'created:' + JSON.stringify(input));

@@ -16,7 +16,7 @@ var mealSchema = mongoose.Schema({
     vegetarian: Boolean,
     vegan: Boolean,
     dinersMax: Number, //max number of diners
-    diners: [Number], //array of diner IDs
+    diners: [String], //array of diner IDs
 });
 
 // export model

@@ -1,6 +1,26 @@
-h2 {
+h3 {
     text-align: center;
 }
 div {
     padding: 0;
+}
+div.row {
+    position: relative;
+}
+img {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.past {
+    background-color: #fff
+}
+.present {
+    background-color: #bfb
+}
+.present>h3 {
+    font-weight: bold;
+}
+.future {
+    background-color: #fff
 }

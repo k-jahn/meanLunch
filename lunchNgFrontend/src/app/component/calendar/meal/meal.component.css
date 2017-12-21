@@ -3,10 +3,39 @@
     padding: 0.5em;
     border: 2px solid grey;
     border-radius: 5px;
+    height: 400px;
+    position: relative;
+    background-color: #fff;
 }
-#mealDiv:hover {
-    background-color: #ffdddd;
+
+
+.cover {
+    z-index: 100;
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0);
+    pointer-events: none;
 }
+
+#mealDiv:hover .cover {
+    background-color: rgba(255, 0, 0, 0.1);
+}
+
+#loading{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
 h3 {
     text-align: center;
+}
+h2 {
+    display: block;
+    height: 6rem;
 }

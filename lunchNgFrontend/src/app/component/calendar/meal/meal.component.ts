@@ -20,13 +20,9 @@ export class MealComponent implements OnInit {
   @Input() day: string;
   @Input() week: string;
   @Input() year: string;
-  days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
   meal: Meal;
+  empty = false;
 
-
-  showMeal(prop: string): string {
-    return this.meal ? this.meal[prop] : 'loading';
-  }
 
 
 
@@ -36,7 +32,11 @@ export class MealComponent implements OnInit {
 
   ngOnInit() {
     this.mealService.getMeals([this.year, this.week, this.day].join('/')).subscribe(x => {
-      this.meal = x[0];
+      if (x.length) {
+        this.meal = x[0];
+      } else {
+        this.empty = true;
+      }
     });
   }
 

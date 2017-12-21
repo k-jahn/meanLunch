@@ -1,20 +1,25 @@
-<h3>{{days[day]}}</h3>
-<div id="mealDiv">
-<p>
-    <app-user-badge [userId]="meal.cookId"></app-user-badge>
-</p>
-<h2>
-    {{showMeal('mealName')}}
-</h2> 
-<p>
-    vegetarian: {{showMeal('vegetarian')}}
-</p>
-<p>
-    vegan: {{showMeal('vegan')}}
-</p>
 
-<p *ngIf="meal.diners.length>0">diners:</p>
-<span *ngFor="let diner of meal.diners" >
-    <app-user-badge [userId]="diner"></app-user-badge>  
-</span>
+<div id="mealDiv">
+    <div class="cover"></div>
+    <!-- loading -->
+    <div *ngIf="!meal && !empty">
+        <img id="loading" src="assets/images/Loading_icon.gif" alt="">
+    </div>
+    <!-- display meal -->
+    <div *ngIf="meal"> 
+        <p>
+            <app-user-badge [userId]="meal.cookId"></app-user-badge>
+        </p>
+        <h2>
+            {{meal.mealName}}
+        </h2> 
+        <p *ngIf="meal.diners.length>0">diners:</p>
+        <span *ngFor="let diner of meal.diners" >
+            <app-user-badge [userId]="diner"></app-user-badge>  
+        </span>
+    </div>
+    <!-- meal empty -->
+    <div *ngIf="empty" >
+        noones cooking!
+    </div>
 </div>
