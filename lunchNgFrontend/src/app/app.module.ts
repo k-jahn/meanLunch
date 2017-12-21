@@ -10,16 +10,20 @@ import { UserService } from './user.service';
 
 // import components
 import { AppComponent } from './app.component';
-import { CalendarComponent } from './calendar/calendar.component';
-import { MealComponent } from './calendar/meal/meal.component';
-import { NavComponent } from './nav/nav.component';
+import { CalendarComponent } from './component/calendar/calendar.component';
+import { MealComponent } from './component/calendar/meal/meal.component';
+import { NavComponent } from './component/nav/nav.component';
+import { UserBadgeComponent } from './component/user-badge/user-badge.component';
+import { MealDetailComponent } from './component/meal-detail/meal-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CalendarComponent,
     NavComponent,
-    MealComponent
+    MealComponent,
+    UserBadgeComponent,
+    MealDetailComponent
   ],
   imports: [
     BrowserModule,

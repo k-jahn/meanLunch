@@ -1,0 +1,12 @@
+#mealDiv {
+    margin: 0.2em;
+    padding: 0.5em;
+    border: 2px solid grey;
+    border-radius: 5px;
+}
+#mealDiv:hover {
+    background-color: #ffdddd;
+}
+h3 {
+    text-align: center;
+}

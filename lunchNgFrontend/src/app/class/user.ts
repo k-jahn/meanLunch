@@ -3,8 +3,7 @@
 export class User {
     '_id': string;
     name: string;
-
-
+    color: string;
 
     constructor(raw) {
         this.setVals(raw);

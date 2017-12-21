@@ -1,0 +1,20 @@
+<h3>{{days[day]}}</h3>
+<div id="mealDiv">
+<p>
+    <app-user-badge [userId]="meal.cookId"></app-user-badge>
+</p>
+<h2>
+    {{showMeal('mealName')}}
+</h2> 
+<p>
+    vegetarian: {{showMeal('vegetarian')}}
+</p>
+<p>
+    vegan: {{showMeal('vegan')}}
+</p>
+
+<p *ngIf="meal.diners.length>0">diners:</p>
+<span *ngFor="let diner of meal.diners" >
+    <app-user-badge [userId]="diner"></app-user-badge>  
+</span>
+</div>
