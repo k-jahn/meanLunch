@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { NgSwitch } from '@angular/common';
 
 // import services
 import { LoginService } from '../../login.service';
