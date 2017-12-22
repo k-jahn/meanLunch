@@ -1,0 +1,9 @@
+.row div {
+    margin: 0.5em 0;
+}
+.badgeContainer {
+    cursor: pointer;
+}
+div.row {
+    margin: 2em 0;
+}

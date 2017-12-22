@@ -13,8 +13,7 @@ var mealSchema = mongoose.Schema({
     cookId: { type: String, required:true }, // id of the cook
     mealName: { type: String, required: true }, // name of the meal 
     mealDescription: String, // description of the meal
-    vegetarian: Boolean,
-    vegan: Boolean,
+    veganity: Number,
     dinersMax: Number, //max number of diners
     diners: [String], //array of diner IDs
 });

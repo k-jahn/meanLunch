@@ -20,7 +20,7 @@ export class UserBadgeComponent implements OnInit {
   constructor(
     private userService: UserService
   ) { }
- 
+
   ngOnInit() {
     this.userService.getUser(this.userId).subscribe(u => this.user = u[0]);
   }

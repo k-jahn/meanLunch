@@ -27,9 +27,8 @@ function setMeals(){
                         },
                         cookId: randomUser(), // id of the cook
                         mealName: randomFood(), // name of the meal
-                        mealDescription: 'lorem', // description of the meal
-                        vegetarian: true,
-                        vegan: true,
+                        mealDescription: lorem, // description of the meal
+                        veganity: Math.floor(Math.random()*4),
                         dinersMax: 6-k, // max number of diners
                         diners: [], // array of diner IDs
                     }

@@ -10,7 +10,6 @@ const User = require('./models/user');
 // load quick and dirty sanitizer
 const sanitize = require('./sanitize');
 
-
 // export API routes ================================================================
 module.exports = function (app) {
 
@@ -119,5 +118,4 @@ module.exports = function (app) {
             else res.send('user '+user.id+ 'created:' + JSON.stringify(input));
         })
     });
-
 };

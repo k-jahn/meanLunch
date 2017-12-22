@@ -40,12 +40,14 @@ export class UserService {
 
   // public method
   public getUser(id: string): Observable<User[]> {
-    // check if fresh users are cached. if not, get new from api
+    // check if fresh users are cached
     if (Date.now() - this.timeStamp > this.expiry) {
+      // set new timestamp and get users from api
       this.timeStamp = Date.now();
-      this.getUserFromApi(id);
+      this.getUserFromApi('');
     } else {
-      console.log('fresh users in cache, ' + (-Date.now() + this.timeStamp + this.expiry) / 60000 + ' min until expiry');
+      const fresh = ((-Date.now() + this.timeStamp + this.expiry) / 60000).toFixed(2);
+      console.log('fresh users in cache, ' + fresh + ' min until expiry');
     }
     // return filtered BehaviorSubject<User[]>
     return this.users.map(x => x.filter(y => id ? y['_id'] === id : true));

@@ -9,8 +9,7 @@ export class Meal {
     cookId: Number; // id of the cook
     mealName: String; // name of the meal
     mealDescription: String; // description of the meal
-    vegetarian: Boolean;
-    vegan: Boolean;
+    veganity: number;
     dinersMax: Number; // max number of diners
     diners: [Number]; // array of diner IDs
 

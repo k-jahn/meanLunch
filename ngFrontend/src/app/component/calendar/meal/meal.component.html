@@ -6,12 +6,31 @@
         </div>
         <!-- display meal -->
         <div *ngIf="meal"> 
-            <p>
-                <app-user-badge [userId]="meal.cookId"></app-user-badge>
-            </p>
             <h2>
-                {{meal.mealName}}
+                {{meal.mealName | titlecase}}
             </h2> 
+            <div [ngSwitch]="meal.veganity" id="veganity">
+                <ng-container *ngSwitchCase="0">
+                    <img src="assets/images/vegan-0.png" title="Omnivore" alt="Omnivore">
+                    Omnivore
+                </ng-container>
+                <ng-container *ngSwitchCase="1">
+                    <img src="assets/images/vegan-1.png" title="Vegetarian" alt="Vegetarian">
+                    Vegetarian
+                </ng-container>
+                <ng-container *ngSwitchCase="2">
+                    <img src="assets/images/vegan-2.png" title="Vegan" alt="Vegan">
+                    Herbivore
+                </ng-container>
+                <ng-container *ngSwitchCase="3">
+                    <img src="assets/images/vegan-3.png" title="Vegan level 5: Eats nothing that casts a shadow" alt="Vegan level 5: Eats nothing that casts a shadow">
+                    Vegan5
+                </ng-container>
+            </div>
+            <p>
+                cook:
+            </p>
+            <app-user-badge [userId]="meal.cookId"></app-user-badge>
             <p *ngIf="meal.diners.length>0">diners:</p>
             <span *ngFor="let diner of meal.diners" >
                 <app-user-badge [userId]="diner"></app-user-badge>  

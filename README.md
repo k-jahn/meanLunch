@@ -16,14 +16,22 @@ runs on NODE.js
 API (hopefully) written in the RESTful style.
 
 ### features implemented
+* mongoDb access
 * meals api
+  - parameterized GET routes
+  - POST rote
 * users api
-* database
+  - parameterized GET routes
+  - POST route  
 * basic input sanitizing
+* rudimentary validation
 
 ### features planned
 #### core
-* api put/delete routes
+* meals api 
+  - put/delete routes
+* users api 
+  - put/delete routes
 * lots of validation
 * user authentification for post/delete/put
 
@@ -33,7 +41,9 @@ API (hopefully) written in the RESTful style.
 * api key
 
 ## Frontend
-built using the angular.io framework v5.x & bootstrap v4.x
+built with:
+* angular.io framework v5.x 
+* bootstrap v4.x
 
 ### features implemented
 * routing
@@ -43,7 +53,7 @@ built using the angular.io framework v5.x & bootstrap v4.x
 * login mockup
 * user badges
 * user.service api access
-  - user data caching to reduce traffic and improve speed
+  - timestamped caching
 * meal.services api access
 
 ### features planned
@@ -65,7 +75,7 @@ built using the angular.io framework v5.x & bootstrap v4.x
 
 ## Quick setup Instructions:
 * if not installed, get a current node.js and npm version
-* install and start a mongoDb server (alternatly use one in cloud, adjust backend/server.js accordingly)
+* install and start a local mongoDb server (alternately cloud server, adjust backend/server.js accordingly)
 * cd into /backend/, run "npm install", then "npm start"
   - to populate the db with test meals and users, open dev/helperApps/dbLoader.html, and click load users and load meals (in that order)
 * cd into /ngFrontend/, run "npm install" then "ng serve"
@@ -74,3 +84,4 @@ built using the angular.io framework v5.x & bootstrap v4.x
 ## Creds
 
 coded by konrad
+images from public domain

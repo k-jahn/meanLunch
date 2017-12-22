@@ -4,3 +4,11 @@
     border: 1px solid black;
     box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.6)
 }
+
+footer {
+    display: block;
+    text-align: center;
+    background-color: #ccc;
+    font-size: 1.5em;    
+    padding: 1em 2em;
+}

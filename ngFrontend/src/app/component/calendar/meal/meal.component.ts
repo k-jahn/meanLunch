@@ -37,6 +37,7 @@ export class MealComponent implements OnInit {
       this.mealService.getMeals([this.year, y, this.day].join('/')).subscribe(x => {
         if (x.length) {
           this.meal = x[0];
+          this.empty = false;
         } else {
           this.meal = undefined;
           this.empty = true;

@@ -4,17 +4,19 @@ a,a:hover,a:focus {
     cursor: default;
 }
 #mealDiv {
+    position: relative;
     margin: 0.2em;
     padding: 0.5em;
-    border: 2px solid grey;
+    background-color: #eef;
     border-radius: 5px;
     height: 400px;
     position: relative;
-    background-color: #fff;
     z-index: 10;
+    text-align: left;
 }
-
-
+p {
+    margin: 0.5em 0;
+}
 
 #loading{
     position: absolute;
@@ -26,5 +28,16 @@ a,a:hover,a:focus {
 
 h2 {
     display: block;
-    height: 6rem;
+}
+
+/* 
+#veganity {
+    position: absolute;
+    top: 0em;
+    right: 0.5em;
+} */
+img {
+    display: inline-block;
+    height: 1em;
+    width: auto;
 }

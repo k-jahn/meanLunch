@@ -3,13 +3,14 @@
         <div class="col-sm-6">
             <a routerLink="/calendar">Calendar</a>
             <span *ngIf="userId">
-                <a routerLink="/profile">Profile</a> {{user.name}}: 
+                 {{user.name}}:
+                <a routerLink="/profile">Profile</a> 
             </span>
             <span *ngIf="!userId">
                 <a routerLink="/login">Login</a>
             </span>
         </div>            
-        <div class="col-sm-6">
+        <div class="col-sm-6 text-right">
             {{title}}
         </div>
     </div>

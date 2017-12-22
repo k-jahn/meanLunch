@@ -3,10 +3,14 @@ nav {
     text-align: left;
     background-color: #ccc;
     font-size: 1.5em;    
+    padding: 1em 2em;
 }
 a {
-    border: 2px solid grey;
     background:white;
     color: black;
-    border-radius: 5ps;
+    border-radius: 5px;
+    padding: 0.1em 0.5em;
+}
+a, a:hover, a:focus {
+    text-decoration: none;
 }

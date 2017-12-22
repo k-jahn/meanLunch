@@ -1,17 +1,14 @@
 #badge {
     position: relative;
-    display: block;
-    border: 2px solid grey;
+    display: inline-block;
     border-radius: 5px;
-    padding: 0 0.5em;
+    padding: 0.1em 0.5em;
+    margin: 0.1em 0;
+    width: 100%;
     max-width: 200px;
     text-align: left;
 }
-span {
-    color: green;
-    background-color: #fff;
-    border: 2px solid grey;
-}
+
 #veganity {
     position: absolute;
     top: 0em;

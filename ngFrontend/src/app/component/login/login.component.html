@@ -1,6 +1,8 @@
 
-<div>
-  <div *ngFor="let user of users" (click)="loginAs(user)">
-    <app-user-badge [userId]="user"></app-user-badge>
+<div class="row">
+  <div *ngFor="let user of users" class="col-sm-4 text-center">
+    <div class="badgeContainer" (click)="loginAs(user)">
+      <app-user-badge [userId]="user"></app-user-badge>
+    </div>
   </div>
 </div>
