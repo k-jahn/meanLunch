@@ -16,25 +16,27 @@ function setMeals(){
             const attr = ['green', 'thai', 'spicy', 'boring', 'red', 'tasty', 'holy', 'salty', 'magic','fried'];
             const food = ['pasta', 'soup', 'lasagne', 'curry', 'falafel', 'gulash', 'sausages', 'spaghetti', 'pizza'];
             const randomFood = () => (attr[Math.floor(Math.random() * attr.length)]+' '+food[Math.floor(Math.random()*food.length)]);
-            for (var k=0; k<5; k++){
-                let m = {
-                    date: {
-                        year: 2017,
-                        week: 0,
-                        day: k
-                    },
-                    cookId: randomUser(), // id of the cook
-                    mealName: randomFood(), // name of the meal
-                    mealDescription: '', // description of the meal
-                    vegetarian: true,
-                    vegan: true,
-                    dinersMax: 6-k, // max number of diners
-                    diners: [], // array of diner IDs
+            for (var w=-2; w<3; w++) {
+                for (var k=0; k<4; k++){
+                    let m = {
+                        date: {
+                            year: 2017,
+                            week: w,
+                            day: k
+                        },
+                        cookId: randomUser(), // id of the cook
+                        mealName: randomFood(), // name of the meal
+                        mealDescription: '', // description of the meal
+                        vegetarian: true,
+                        vegan: true,
+                        dinersMax: 6-k, // max number of diners
+                        diners: [], // array of diner IDs
+                    }
+                    for (var i=0;i<Math.random()*7;i++){
+                        m.diners.push(randomUser()) 
+                    }
+                    $.post('http://localhost:8888/api/meal', m, (r) => $('#meals+div').append($('<p>').text(JSON.stringify(r))));
                 }
-                for (var i=0;i<Math.random()*7;i++){
-                    m.diners.push(randomUser()) 
-                }
-                $.post('http://localhost:8888/api/meal', m, (r) => $('#meals+div').append($('<p>').text(JSON.stringify(r))));
             }
         }
     });

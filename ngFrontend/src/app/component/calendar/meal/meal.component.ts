@@ -1,5 +1,7 @@
 // import from library
 import { Component, OnInit, Input } from '@angular/core';
+import { Observable, BehaviorSubject } from 'rxjs/';
+
 
 // import service
 import { MealService } from '../../../meal.service';
@@ -18,7 +20,7 @@ import { User } from '../../../class/user';
 })
 export class MealComponent implements OnInit {
   @Input() day: string;
-  @Input() week: string;
+  @Input() week: Observable<string>;
   @Input() year: string;
   meal: Meal;
   empty = false;
@@ -31,12 +33,15 @@ export class MealComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.mealService.getMeals([this.year, this.week, this.day].join('/')).subscribe(x => {
-      if (x.length) {
-        this.meal = x[0];
-      } else {
-        this.empty = true;
-      }
+    this.week.subscribe(y => {
+      this.mealService.getMeals([this.year, y, this.day].join('/')).subscribe(x => {
+        if (x.length) {
+          this.meal = x[0];
+        } else {
+          this.meal = undefined;
+          this.empty = true;
+        }
+      });
     });
   }
 
