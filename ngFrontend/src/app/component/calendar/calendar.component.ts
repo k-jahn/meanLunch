@@ -23,7 +23,7 @@ export class CalendarComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.week.subscribe(x => this.titleService.title.next('Calender - 2017 Week ' + x));
+    this.week.subscribe(x => this.titleService.title.next('Calendar - 2017 Week ' + x));
   }
 
 }

@@ -41,6 +41,7 @@ built using the angular.io framework v5.x & bootstrap v4.x
 * login mockup
 * user badges
 * user & meal services to access API
+* user data caching to reduce traffic and improve speed
 
 ### features planned
 #### core

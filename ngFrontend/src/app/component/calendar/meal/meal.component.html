@@ -1,4 +1,4 @@
-<a routerLink="/mealdetail/{{year}}/{{week}}/{{day}}">
+<a routerLink="/mealdetail/{{year}}/{{week.getValue()}}/{{day}}">
     <div id="mealDiv">
         <!-- loading -->
         <div *ngIf="!meal && !empty">

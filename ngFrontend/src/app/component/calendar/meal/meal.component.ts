@@ -20,7 +20,7 @@ import { User } from '../../../class/user';
 })
 export class MealComponent implements OnInit {
   @Input() day: string;
-  @Input() week: Observable<string>;
+  @Input() week: BehaviorSubject<string>;
   @Input() year: string;
   meal: Meal;
   empty = false;

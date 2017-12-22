@@ -4,6 +4,7 @@ $(function() {
     $('#users').on('click',setUsers)    
     $('#get').on('click',get)    
 });
+const lorem = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit iste dolorem, rem autem sequi voluptas placeat, maxime tenetur architecto repellat eligendi quibusdam consequatur corrupti officia molestiae impedit omnis! Quae, unde."
 
 
 // send example meals to api
@@ -16,17 +17,17 @@ function setMeals(){
             const attr = ['green', 'thai', 'spicy', 'boring', 'red', 'tasty', 'holy', 'salty', 'magic','fried'];
             const food = ['pasta', 'soup', 'lasagne', 'curry', 'falafel', 'gulash', 'sausages', 'spaghetti', 'pizza'];
             const randomFood = () => (attr[Math.floor(Math.random() * attr.length)]+' '+food[Math.floor(Math.random()*food.length)]);
-            for (var w=-2; w<3; w++) {
+            for (var w=-2; w<4; w++) {
                 for (var k=0; k<4; k++){
                     let m = {
                         date: {
                             year: 2017,
                             week: w,
-                            day: k
+                            day: k > w ? k+1:k
                         },
                         cookId: randomUser(), // id of the cook
                         mealName: randomFood(), // name of the meal
-                        mealDescription: '', // description of the meal
+                        mealDescription: 'lorem', // description of the meal
                         vegetarian: true,
                         vegan: true,
                         dinersMax: 6-k, // max number of diners

@@ -1,11 +1,16 @@
 <nav>
-    <a routerLink="/calendar">Calendar</a>
-    <span *ngIf="userId">
-        <a routerLink="/profile">Profile</a> {{user.name}}: 
-    </span>
-    <span *ngIf="!userId">
-        <a routerLink="/login">Login</a>
-    </span>
-    
-    {{title}}
+    <div class="row">
+        <div class="col-sm-6">
+            <a routerLink="/calendar">Calendar</a>
+            <span *ngIf="userId">
+                <a routerLink="/profile">Profile</a> {{user.name}}: 
+            </span>
+            <span *ngIf="!userId">
+                <a routerLink="/login">Login</a>
+            </span>
+        </div>            
+        <div class="col-sm-6">
+            {{title}}
+        </div>
+    </div>
 </nav>
