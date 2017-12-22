@@ -36,22 +36,25 @@ API (hopefully) written in the RESTful style.
 built using the angular.io framework v5.x & bootstrap v4.x
 
 ### features implemented
-* basic routing
-* basic calendar display
+* routing
+* calendar
+  - display
+  - week switching
 * login mockup
 * user badges
-* user & meal services to access API
-* user data caching to reduce traffic and improve speed
+* user.service api access
+  - user data caching to reduce traffic and improve speed
+* meal.services api access
 
 ### features planned
 #### core
 * proper login
-* real calendar 
+* calendar 
   - date to week and week to date mapping
-  - week switching
 * meal detail view with edit/new meal option
   - ability to register as diner
-* profile view with edit/new profile options
+* profile view 
+  - edit/new profile options
 
 #### neat
 * user avatars (gravatar?)
