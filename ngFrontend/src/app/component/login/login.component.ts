@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.titleService.title.next('Log In');
-    this.loginService.userId.subscribe(x => this.userId = x);
+    this.loginService.user.subscribe(x => this.userId = x ? x['_id'] : '');
     this.userService.getUser('').subscribe(x => this.users = x.map(y => y['_id']));
   }
 }

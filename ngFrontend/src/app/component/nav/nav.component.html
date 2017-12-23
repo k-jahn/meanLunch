@@ -2,11 +2,11 @@
     <div class="row">
         <div class="col-sm-6">
             <a routerLink="/calendar">Calendar</a>
-            <span *ngIf="userId">
+            <span *ngIf="user">
                  {{user.name}}:
                 <a routerLink="/profile">Profile</a> 
             </span>
-            <span *ngIf="!userId">
+            <span *ngIf="!user">
                 <a routerLink="/login">Login</a>
             </span>
         </div>            

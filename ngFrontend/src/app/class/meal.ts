@@ -7,11 +7,12 @@ export class Meal {
         day: Number
     };
     cookId: Number; // id of the cook
-    mealName: String; // name of the meal
-    mealDescription: String; // description of the meal
-    veganity: number;
-    dinersMax: Number; // max number of diners
     diners: [Number]; // array of diner IDs
+    dinersMax: Number; // max number of diners
+    mealDescription: String; // description of the meal
+    mealName: String; // name of the meal
+    veganity: number;
+    veganityText: String;
 
     constructor(raw) {
         this.setVals(raw);

@@ -16,7 +16,6 @@ import { User } from '../../class/user';
 })
 export class NavComponent implements OnInit {
   title = '';
-  userId = '';
   user: User;
   constructor(
     private titleService: TitleService,
@@ -26,10 +25,7 @@ export class NavComponent implements OnInit {
 
   ngOnInit() {
     this.titleService.title.subscribe(x => this.title = x);
-    this.loginService.userId.subscribe(x => {
-      this.userId = x;
-      this.userService.getUser(this.userId).subscribe(y => this.user = y[0]);
-    });
+    this.loginService.user.subscribe(x => this.user = x );
   }
 
 }

@@ -27,6 +27,10 @@ API (hopefully) written in the RESTful style.
 * rudimentary validation
 
 ### features planned
+
+#### Next steps/todo
+* rework login (require login)
+
 #### core
 * meals api 
   - put/delete routes
@@ -76,6 +80,7 @@ built with:
 ## Quick setup Instructions:
 * if not installed, get a current node.js and npm version
 * install and start a local mongoDb server (alternately cloud server, adjust backend/server.js accordingly)
+<!-- * cd into /backend/ssl/ , run "openssl req -x509 -newkey rsa:2048 -keyout server.key -out server.crt -days 356" to generate ssl keys -->
 * cd into /backend/, run "npm install", then "npm start"
   - to populate the db with test meals and users, open dev/helperApps/dbLoader.html, and click load users and load meals (in that order)
 * cd into /ngFrontend/, run "npm install" then "ng serve"

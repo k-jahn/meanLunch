@@ -29,7 +29,6 @@ div.row>div img {
     transform: translate(-50%,-50%);
 }
 .past {
-    background-color: #fff
 }
 .present {
     background-color: #bfb
@@ -38,7 +37,6 @@ div.row>div img {
     font-weight: bold;
 }
 .future {
-    background-color: #fff
 }
 
 .cover {

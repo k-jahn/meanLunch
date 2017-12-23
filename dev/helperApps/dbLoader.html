@@ -4,15 +4,24 @@
 <head>
     <title>dbLoader</title>
     <meta charset="utf-8">
+    <style>
+        #users {
+            background-color: #fdd;
+        } 
+        #meals {
+            background-color: #ddf;
+        }
+    </style>
 </head>
+
+
 
 <body>
     <input type="text" id="getUrl" value="/api"> <button id="get">GET</button>
     <div></div>
-    <button id="users">load users to db!</button>
-    <div></div>
-    <button id="meals">load meals to db!</button>
-    <div></div>
+    <button id="set">populate db with examples</button>
+    <div id="users"></div>
+    <div id="meals"></div>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="dbLoader.js"></script>
 </body>

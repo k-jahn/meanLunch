@@ -7,7 +7,7 @@ a,a:hover,a:focus {
     position: relative;
     margin: 0.2em;
     padding: 0.5em;
-    background-color: #eef;
+    background-color: #fff;
     border-radius: 5px;
     height: 400px;
     position: relative;
@@ -36,7 +36,7 @@ h2 {
     top: 0em;
     right: 0.5em;
 } */
-img {
+#veganity img {
     display: inline-block;
     height: 1em;
     width: auto;

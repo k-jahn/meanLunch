@@ -14,7 +14,6 @@ import { User } from '../../class/user';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  userId: string;
   user: User;
 
   constructor(
@@ -26,10 +25,7 @@ export class ProfileComponent implements OnInit {
   ngOnInit(
   ) {
     this.titleService.title.next('Profile');
-    this.loginService.userId.subscribe(x => {
-      this.userId = x;
-      this.userService.getUser(this.userId).subscribe(y => this.user = y[0]);
-    });
+    this.loginService.user.subscribe(x => this.user = x );
   }
 
 }

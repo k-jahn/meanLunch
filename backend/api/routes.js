@@ -64,13 +64,14 @@ module.exports = function (app) {
         const input = sanitize(req.body);
         // create entry
         Meal.create({
-            date: input.date, // date
             cookId: input.cookId, // id of the cook
-            mealName: input.mealName, // name of the meal 
-            mealDescription: input.mealDescription || '', // description of the meal
-            veganity: +input.veganity,
-            dinersMax: +input.dinersMax || 0, //max number of diners
+            date: input.date, // date
             diners: input.diners || [], //array of diner IDs
+            dinersMax: +input.dinersMax || 0, //max number of diners
+            mealDescription: input.mealDescription || '', // description of the meal
+            mealName: input.mealName, // name of the meal 
+            veganity: +input.veganity,
+            veganityText: input.veganityText,
         }, function (err, meal) {
             if (err) res.send(err);
             else res.send('meal created: ' + JSON.stringify(input));

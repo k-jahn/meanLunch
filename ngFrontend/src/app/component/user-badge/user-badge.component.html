@@ -1,5 +1,5 @@
 <div *ngIf="user" id="badge" [style.background-color]="user.color">
-    {{user.name}}
+    {{ user.name | titlecase }}
     <div [ngSwitch]="user.veganity" id="veganity">
         <ng-container *ngSwitchCase="0">
             <img src="assets/images/vegan-0.png" title="Omnivore" alt="Omnivore">
