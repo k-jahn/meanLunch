@@ -29,6 +29,7 @@ API (hopefully) written in the RESTful style.
 ### features planned
 
 #### Next steps/todo
+* write model constructors to simplify routing !
 * rework login (require login)
 
 #### core
@@ -36,6 +37,8 @@ API (hopefully) written in the RESTful style.
   - put/delete routes
 * users api 
   - put/delete routes
+* comments api
+  - the whole shebang
 * lots of validation
 * user authentification for post/delete/put
 
@@ -65,7 +68,8 @@ built with:
 * proper login
 * calendar 
   - date to week and week to date mapping
-* meal detail view with edit/new meal option
+* meal detail view
+  - edit/new meal form
   - ability to register as diner
 * profile view 
   - edit/new profile options

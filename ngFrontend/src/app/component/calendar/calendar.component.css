@@ -22,7 +22,7 @@ div.row>div {
 div.arrow {
     max-width: 100px;
 }
-div.row>div img {
+.arrow img {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -56,4 +56,10 @@ div:hover>.cover {
 
 div.arrow:hover>.cover {
     background-color: rgba(0, 0, 0, 0.15);
+}
+
+.icon img {
+    display: inline-block;
+    height: 1.2em;
+    width: auto;
 }
