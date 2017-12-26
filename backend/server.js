@@ -1,6 +1,6 @@
 // server.js entrypoint for node server
 
-// dependencies =================================================
+// dependencies ==========================================================
 var bodyParser = require('body-parser');
 var cors = require('cors');
 var express = require('express');
@@ -27,18 +27,24 @@ app.use(bodyParser.urlencoded({ 'extended': 'true' }));
 app.use(bodyParser.json());
 app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
 
-// load routes ===============================================
-
+// load routes =============================================================
 require('./api/routes')(app);
 
 
-// start http server
-var port = 8888;
-app.listen(port)
-console.log('App listening on port ' + port);
+// // start http server
+// var httpPort = 8888;
+// app.listen(httpPort)
+// console.log('App listening for http on port ' + httpPort);
 
 // start https server
-// var privateKey = fs.readFileSync('ssl/server.key', 'utf8');
-// var certificate = fs.readFileSync('ssl/server.crt', 'utf8');
-// var credentials = { key: privateKey, cert: certificate };
-// https.createServer(credentials, app).listen(8080);
+var privateKey = fs.readFileSync('./ssl/server.key', 'utf8');
+var certificate = fs.readFileSync('./ssl/server.crt', 'utf8');
+var pass = require('./ssl/passphrase').module;
+var credentials = {
+    key: privateKey, 
+    cert: certificate,
+    passphrase: pass
+};
+var httpsPort = 8443;
+https.createServer(credentials, app).listen(httpsPort);
+console.log('App listening for https on port ' + httpsPort);

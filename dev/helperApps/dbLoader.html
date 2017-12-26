@@ -14,6 +14,8 @@
         </style>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script type="text/javascript">
+        // API url, change if necessary
+        const apiUrl = 'https://localhost:8443/api/'
     
         $(function () {
             $('#set').on('click', () => { setUsers(); setMeals(); });
@@ -23,7 +25,7 @@
 
         // send example meals to api
         function setMeals() {
-            $.getJSON('http://localhost:8888/api/user/', function (res) {
+            $.getJSON(apiUrl + 'user/', function (res) {
                 if (res.users.length == 0) {
                     console.log('add users first!')
                 } else {
@@ -52,7 +54,7 @@
                             for (var i = 0; i < Math.random() * 7; i++) {
                                 m.diners.push(randomUser())
                             }
-                            $.post('http://localhost:8888/api/meal', m, (r) => $('#meals').append($('<pre>').text(JSON.stringify(r), null, 2)));
+                            $.post(apiUrl + 'meal', m, (r) => $('#meals').append($('<pre>').text(JSON.stringify(r), null, 2)));
                         }
                     }
                 }
@@ -97,7 +99,7 @@
                     veganity: Math.floor(Math.random() * 4),
                     color: randomCol(),
                 }
-                $.post('http://localhost:8888/api/user', m, (r) => $('#users').append($('<pre>').text(JSON.stringify(r), null, 2)));
+                $.post(apiUrl + 'user', m, (r) => $('#users').append($('<pre>').text(JSON.stringify(r), null, 2)));
             }
         }
 

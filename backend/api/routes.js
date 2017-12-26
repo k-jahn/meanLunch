@@ -13,8 +13,8 @@ const sanitize = require('./sanitize');
 // export API routes ================================================================
 module.exports = function (app) {
 
-    // meals api --------------------------------------------------------------
-    //  mongoose.find meals
+    // meals API --------------------------------------------------------------
+    // mongoose.find meals
     const getMeals = function(par, req, res) {
         Meal.find(par)
             .limit(20)
@@ -57,33 +57,22 @@ module.exports = function (app) {
                 'date.day': req.params.day,
             }, req, res)
     });
-
     // route for POST meal 
     app.post('/api/meal', function (req, res) {
         // sanitize input
         const input = sanitize(req.body);
         // create entry
-        Meal.create({
-            cookId: input.cookId, // id of the cook
-            date: input.date, // date
-            diners: input.diners || [], //array of diner IDs
-            dinersMax: +input.dinersMax || 0, //max number of diners
-            mealDescription: input.mealDescription || '', // description of the meal
-            mealName: input.mealName, // name of the meal 
-            veganity: +input.veganity,
-            veganityText: input.veganityText,
-        }, function (err, meal) {
+        var meal = new Meal(input);
+        meal.save(function (err, meal) {
             if (err) res.send(err);
-            else res.send('meal created: ' + JSON.stringify(input));
+            else res.send('meal created');
         });
     });
-    
-    // delete meal
-    
-    // put meal
-    
-    // users api ---------------------------------------------------------------------
-    //  mongoose.find user
+    // todo delete meal
+    // todo put meal
+
+    // users API ---------------------------------------------------------------------
+    // mongoose.find user
     const getUsers= function(par, req, res) {
         return User.find(par)
             .exec(function (err, user) {
@@ -110,13 +99,44 @@ module.exports = function (app) {
     app.post('/api/user', function(req, res) {
         // sanitize input
         const input = sanitize(req.body);
-        User.create({
-            name: input.name,
-            veganity: input.veganity,
-            color: input.color,
-        }, function (err, user) {
+        var user = new User(input);
+        user.save(function (err, user) {
             if (err) res.send(err);
-            else res.send('user '+user.id+ 'created:' + JSON.stringify(input));
+            else res.send('user '+user.id+ ' created: ' + JSON.stringify(input));
+        })
+    });
+
+    //  comments API ---------------------------------------------------------------------
+    //  mongoose.find coment
+    const getComments= function(par, req, res) {
+        return Comment.find(par)
+            .exec(function (err, comment) {
+                if (err) res.send(err) // report errors
+                else {
+                    const resJson = {
+                        api: version + ' /comments',
+                        params: req.params,
+                        comments: comment
+                    };
+                    res.json(resJson); // send comments to client
+                }
+            }); 
+    }
+    // routes for GET comments
+    app.get('/api/comment/:id/', function (req, res) {
+        getcomments({_id: req.params.id}, req, res)
+    });
+    app.get('/api/comment/', function (req, res) {
+        getcomments({}, req, res)
+    });
+    // route for POST comment
+    app.post('/api/comment', function(req, res) {
+        // sanitize input
+        const input = sanitize(req.body);
+        var comment = new Comment(input);
+        comment.save(function (err, comment) {
+            if (err) res.send(err);
+            else res.send('comment '+comment.id+ 'created:' + JSON.stringify(input));
         })
     });
 };

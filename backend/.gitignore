@@ -1,2 +1,3 @@
 node_modules/*
-ssl/
+ssl/server*
+ssl/passphrase.js

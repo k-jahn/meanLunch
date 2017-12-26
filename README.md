@@ -79,13 +79,23 @@ built with:
 * make it pretty!
 * make it pretty on mobile!
 * add animations
-* Local/Sessionstorage data caching
+* slackbot integration
 
 ## Quick setup Instructions:
 * if not installed, get a current node.js and npm version
 * install and start a local mongoDb server (alternately cloud server, adjust backend/server.js accordingly)
-<!-- * cd into /backend/ssl/ , run "openssl req -x509 -newkey rsa:2048 -keyout server.key -out server.crt -days 356" to generate ssl keys -->
-* cd into /backend/, run "npm install", then "npm start"
+
+* for (dev) https
+  - cd into /backend/ssl/ , run "openssl req -x509 -newkey rsa:2048 -keyout server.key -out server.crt -days 356" to generate ssl key and cert 
+  - rename 'passphrase_temp.js' 'passphrase.js', insert the passphrase you entered when generating certificate.
+  - access 'https://localhost:8443/' with your test browser and accept unsafe certificate
+
+* for http
+  -uncomment http lines in backend/server.js
+  -change ngFrontend/src/app/urls.ts to point to 'http://localhost:8888/api'
+  -ditto dev/helperApps/dbLoader.html
+
+* cd into /backend/, run "npm install" to install depenencies, then "npm start" to run
   - to populate the db with test meals and users, open dev/helperApps/dbLoader.html, and click load users and load meals (in that order)
 * cd into /ngFrontend/, run "npm install" then "ng serve"
 * open browser to http://localhost:4200/
