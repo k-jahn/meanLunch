@@ -1,8 +1,28 @@
 <div class="container">
-  <app-nav></app-nav>
-  
-  <router-outlet></router-outlet>
-
+  <!-- nav -->
+  <nav>
+    <div class="row">
+      <div class="col-sm-6">
+        <a routerLink="/calendar">Calendar</a>
+        <span *ngIf="user">
+          {{user.name}}:
+          <a routerLink="/profile">Profile</a>
+        </span>
+        <span *ngIf="!user">
+          <a routerLink="/login">Login</a>
+        </span>
+      </div>
+      <div class="col-sm-6 text-right">
+        {{title}}
+      </div>
+    </div>
+  </nav>
+  <!-- main -->
+  <main>
+    <router-outlet>
+    </router-outlet>
+  </main>
+  <!-- footer -->
   <footer>
     berlin.origin lunchApp | code by  <a href="https://github.com/k-jahn">Konrad</a>
   </footer>
