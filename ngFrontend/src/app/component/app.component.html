@@ -1,4 +1,4 @@
-basic
+<!-- app -->
 <div class="container">
   <!-- nav -->
   <nav>
@@ -13,7 +13,7 @@ basic
         <span *ngIf="user">
           <a routerLink="/profile">{{user.name}}</a>
         </span>
-        <a (click)="">logout</a>
+        <a (click)="loginService.logOut()">logout</a>
       </div>
     </div>
   </nav>

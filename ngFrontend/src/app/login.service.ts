@@ -24,4 +24,8 @@ export class LoginService {
     console.log('logging in as ' + id);
     return true;
   }
+
+  logOut(): void {
+    this.user.next(null);
+  }
 }
