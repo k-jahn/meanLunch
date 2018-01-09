@@ -2,7 +2,7 @@
     <div id="mealDiv">
         <!-- loading -->
         <div *ngIf="!meal && !empty">
-            <img id="loading" src="assets/images/Loading_icon.gif" alt="">
+            <img class="center" src="assets/images/Loading_icon.gif" alt="">
         </div>
         <!-- display meal -->
         <div *ngIf="meal"> 
@@ -34,8 +34,10 @@
             </span>
         </div>
         <!-- meal empty -->
-        <div *ngIf="empty" >
-            noones cooking!
+        <div *ngIf="empty" class="center">
+            Nothing so far
+            <img src="assets/images/pan.svg" title=":(" alt=":(">
+            feel like cooking?
         </div>
     </div>
 </a>

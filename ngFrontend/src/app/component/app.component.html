@@ -1,19 +1,19 @@
+basic
 <div class="container">
   <!-- nav -->
   <nav>
     <div class="row">
-      <div class="col-sm-6">
+      <div class="col-sm-4">
         <a routerLink="/calendar">Calendar</a>
-        <span *ngIf="user">
-          {{user.name}}:
-          <a routerLink="/profile">Profile</a>
-        </span>
-        <span *ngIf="!user">
-          <a routerLink="/login">Login</a>
-        </span>
       </div>
-      <div class="col-sm-6 text-right">
+      <div class="col-sm-4 text-center">
         {{title}}
+      </div>
+      <div class="col-sm-4 text-right">
+        <span *ngIf="user">
+          <a routerLink="/profile">{{user.name}}</a>
+        </span>
+        <a (click)="">logout</a>
       </div>
     </div>
   </nav>
@@ -26,4 +26,12 @@
   <footer>
     berlin.origin lunchApp | code by  <a href="https://github.com/k-jahn">Konrad</a>
   </footer>
+</div>
+
+
+<!-- overlay if not logged in -->
+<div class="overlay" *ngIf="!user">
+  <div class="splash">
+    <app-login></app-login>
+  </div>
 </div>

@@ -104,7 +104,7 @@
         }
 
         function get() {
-            $.getJSON('https://localhost:8080' + $('#getUrl').val(), (r) => $('#get+div').append($('<pre>').text(JSON.stringify(r))))
+            $.getJSON('https://localhost:8443' + $('#getUrl').val(), (r) => $('#get+div').append($('<pre>').text(JSON.stringify(r))))
         }
     </script>
 </head>

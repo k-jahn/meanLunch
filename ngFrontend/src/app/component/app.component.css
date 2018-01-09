@@ -1,11 +1,12 @@
 nav {
     display: block;
     text-align: left;
-    background-color: #ccc;
+    background-color: #009;
     font-size: 1.5em;    
     padding: 1em 2em;
+    color: #fff;
 }
-a {
+nav a {
     background:white;
     color: black;
     border-radius: 5px;
@@ -26,7 +27,30 @@ a, a:hover, a:focus {
 footer {
     display: block;
     text-align: center;
-    background-color: #ccc;
+    background-color: #009;
     font-size: 1.5em;    
     padding: 1em 2em;
+    color: #fff;
+}
+
+footer a {
+    color: #ccc;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.6)
+}
+
+.splash {
+    background-color: #fff;
+    border: 1px solid black;
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 2em 1em;
 }

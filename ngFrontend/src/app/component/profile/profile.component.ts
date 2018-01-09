@@ -25,7 +25,10 @@ export class ProfileComponent implements OnInit {
   ngOnInit(
   ) {
     this.titleService.title.next('Profile');
-    this.loginService.user.subscribe(x => this.user = x );
+    this.loginService.user.subscribe(x => {
+      this.user = x;
+      this.titleService.title.next(this.user.name + '\'s profile');
+    });
   }
 
 }

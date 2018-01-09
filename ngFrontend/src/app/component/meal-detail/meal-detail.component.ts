@@ -23,7 +23,7 @@ export class MealDetailComponent implements OnInit {
   ngOnInit() {
     this.titleService.title.next('Meal Detail');
     this.route.paramMap.subscribe(x => {
-      // this.mealDate = [x.params['y'], x.params['w'], x.params['d']];
+      this.mealDate = [x.get['y'], x.get['w'], x.get['d']];
       this.titleService.title.next('Meal Detail ' + this.mealDate.reverse().join('.'));
     });
   }
