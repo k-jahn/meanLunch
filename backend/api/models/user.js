@@ -5,9 +5,10 @@ var mongoose = require('mongoose');
 
 // define schema
 var userSchema = mongoose.Schema({
-    name: { type:String, required: true },
+    name: { type: String, required: true },
     color: String,
     veganity: Number, 
+    info: String,
 });
 
 // export model

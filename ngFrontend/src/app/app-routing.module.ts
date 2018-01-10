@@ -13,7 +13,7 @@ import { ProfileComponent } from './component/profile/profile.component';
 const routes: Routes = [
   { path: '', redirectTo: '/calendar', pathMatch: 'full' },
   { path: 'calendar', component: CalendarComponent },
-  { path: 'mealdetail/:y/:w/:d', component: MealDetailComponent },
+  { path: 'meal/:y/:w/:d', component: MealDetailComponent },
   { path: 'profile', component: ProfileComponent},
 ];
 

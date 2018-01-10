@@ -15,11 +15,20 @@ import { User } from '../../class/user';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  private userId = '';
-  private users: string[] = [];
+  private users: string[] = []; // Stores UserList
+  private newUser = false; // Toggles Login / New User Views
 
-  loginAs(user: string): void {
+  private formModel = { // new User Model for login form
+    name: '',
+    veganity: -1
+  };
+
+  // methods
+  private loginAs(user: string): void {
     this.loginService.loginAs(user);
+  }
+  // TODO
+  private onSubmit(): void {
   }
 
   constructor(
@@ -29,7 +38,6 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.loginService.user.subscribe(x => this.userId = x ? x['_id'] : '');
     this.userService.getUser('').subscribe(x => this.users = x.map(y => y['_id']));
   }
 }

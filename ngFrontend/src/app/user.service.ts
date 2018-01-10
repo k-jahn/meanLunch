@@ -11,6 +11,9 @@ import { apiUrl } from './urls';
 // import class
 import { User } from './class/user';
 
+// import service
+import { LoginService } from './login.service';
+
 interface ApiResponse {
   users: User[];
 }
@@ -27,7 +30,7 @@ export class UserService {
     private http: HttpClient
   ) { }
 
-  // private method to get users from server
+  // private methods to get users from server
   private getUserFromApi(id: string): void {
     this.http.get<ApiResponse>(apiUrl + 'user/')
       .pipe(
@@ -38,7 +41,15 @@ export class UserService {
       ).subscribe(x => this.users.next(x));
   }
 
-  // public method
+  // public methods
+  public postUser(user: object): Observable<string> {
+      return this.http.post<string>(apiUrl + 'user/', user)
+        .pipe(
+          tap(
+            r => window.console.log('Posted user ' + r)
+          )
+        );
+    }
   public getUser(id: string): Observable<User[]> {
     // check if fresh users are cached
     if (Date.now() - this.timeStamp > this.expiry) {

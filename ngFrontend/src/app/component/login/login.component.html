@@ -1,15 +1,39 @@
-<div class="text-center">
-  <h2>Login</h2>
-</div>
+<div class="splash">
+  <div class="text-center">
+    <button (click)="newUser = false;">Login</button>
+    <button (click)="newUser = true;">New User</button>
+  </div>
 
-<div class="row">
-  <div *ngFor="let user of users" class="col-sm-4 text-center">
-    <div class="badgeContainer" (click)="loginAs(user)">
-      <app-user-badge [userId]="user"></app-user-badge>
+  <!-- users selection -->
+  <div class="row users" *ngIf="!newUser">
+    <div *ngFor="let user of users" class="col-sm-4 text-center">
+      <div class="badgeContainer" (click)="loginAs(user)">
+        <app-user-badge [userId]="user"></app-user-badge>
+      </div>
     </div>
   </div>
-</div>
 
-<div class="text-center">
-  <button>Create User</button>
+  <div class="create" *ngIf="newUser">
+    <form (ngSubmit)="onSubmitUser()">
+      <div class="row">      
+        <div class="col-6 text-center">
+          Name: 
+          <input type="text" id="name" required [(ngModel)]="formModel.name" name="name" maxlength="20">
+        </div>
+        <div class="col-6 text-center">
+          Veganity:
+          <select name="veganity" [(ngModel)]="formModel.veganity" id="veganity">
+            <option value="-1"></option>
+            <option value="0">Omnivore</option>
+            <option value="1">Vegetarian</option>
+            <option value="2">Vegan</option>
+            <option value="3">V5</option>
+          </select>
+        </div>
+      </div>
+      <div class="text-center">
+        <button>Create User</button>
+      </div>
+    </form>
+  </div>
 </div>

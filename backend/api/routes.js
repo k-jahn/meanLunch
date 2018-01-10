@@ -102,7 +102,7 @@ module.exports = function (app) {
         var user = new User(input);
         user.save(function (err, user) {
             if (err) res.send(err);
-            else res.send('user '+user.id+ ' created: ' + JSON.stringify(input));
+            else res.send(user.id);
         })
     });
 

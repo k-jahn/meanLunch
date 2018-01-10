@@ -1,9 +1,26 @@
+
+
+
+
 .row div {
     margin: 0.5em 0;
 }
 .badgeContainer {
     cursor: pointer;
 }
-div.row {
-    margin: 2em 0;
+button {
+    margin: 1em 0;
+}
+
+
+.splash {
+    -webkit-transition: height 0.5s ease-in-out;
+    -moz-transition: height 0.5s ease-in-out;
+    transition: height 0.5s ease-in-out;
+    background-color: #fff;
+    border: 1px solid black;
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 2em 1em;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.6);
 }

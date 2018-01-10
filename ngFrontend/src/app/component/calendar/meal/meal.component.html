@@ -1,4 +1,4 @@
-<a routerLink="/mealdetail/{{year}}/{{week.getValue()}}/{{day}}">
+<a routerLink="/meal/{{year}}/{{week.getValue()}}/{{day}}">
     <div id="mealDiv">
         <!-- loading -->
         <div *ngIf="!meal && !empty">
@@ -6,6 +6,10 @@
         </div>
         <!-- display meal -->
         <div *ngIf="meal"> 
+            <app-user-badge [userId]="meal.cookId"></app-user-badge>
+            <p>
+                is cooking
+            </p>
             <h2>
                 {{meal.mealName | titlecase}}
             </h2> 
@@ -24,10 +28,6 @@
                 </ng-container>
                 {{meal.veganityText}}
             </div>
-            <p>
-                cook:
-            </p>
-            <app-user-badge [userId]="meal.cookId"></app-user-badge>
             <p *ngIf="meal.diners.length>0">diners:</p>
             <span *ngFor="let diner of meal.diners" >
                 <app-user-badge [userId]="diner"></app-user-badge>  
